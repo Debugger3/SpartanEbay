@@ -1,0 +1,2 @@
+# SpartanEbay
+Ebay Model
