@@ -1,0 +1,21 @@
+<!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1.1//EN" "http://www.opensymphony.com/xwork/xwork-1.1.1.dtd">
+ 
+<xwork>
+    <include file="webwork-default.xml"/>
+ 
+    <package name="default" extends="webwork-default">
+        <!-- Add your actions here -->
+        <action name="login" class="simple.LoginAction" >
+            <result name="success" type="dispatcher">/pages/welcome.jsp</result>
+            <result name="error" type="redirect">/login.jsp</result>
+        </action>
+ 
+        <action name="logout2" class="simple.LoginAction" method="logout" >
+            <result name="success" type="redirect">/login.jsp</result>
+        </action>
+ 
+        <action name="logout" class="simple.LogoutAction" >
+            <result name="success" type="redirect">/login.jsp</result>
+        </action>
+    </package>
+</xwork>

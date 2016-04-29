@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC  
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"  
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+    <struts>
+    <constant name="struts.ui.theme" value="simple" />
+    <constant name="struts.mapper.action.prefix.enabled" value="true"/>
+	<package name="default"  extends="struts-default, json-default">    
+          <action name="login" class="org.struts.action.LoginAction" >
+            <result name="success" type="redirect">/adminMenu.jsp</result>
+            <result name="error" type="redirect">/sellerLogin.jsp</result>
+        </action>
+        
+         <action name="adminlogout" class="org.struts.action.LoginAction" method="logout" >
+            <result name="success" type="redirect">/indexCopy.jsp</result>
+            
+        </action>
+        
+         <action name="selectCatSubCat" class="org.struts.action.AddItemAction" method="displayList">
+		<result name="success">/deletesubcategory.jsp</result>
+		</action>
+		 <action name="deleteSubCat" class="org.struts.action.deletesubcategory">
+		<result name="success">/demoSuccess.jsp</result>
+		</action>
+		
+		  <action name="selectCat" class="org.struts.action.AddItemAction" method="displayList">
+		<result name="success">/deletecategory.jsp</result>
+		</action>
+		
+		 <action name="deleteCat" class="org.struts.action.deletesubcategory" method="deleteCategory">
+		<result name="success">/demoSuccess.jsp</result>
+		</action>
+		
+		
+		  <action name="selectsubCatForAdv" class="org.struts.action.AddItemAction" method="displayList">
+		<result name="success">/advcategory.jsp</result>
+		</action>
+		
+		<action name="subcatforadv" class="org.struts.action.updateAdvCost">
+		<result name="success">/advcostupdate.jsp</result>
+		</action>
+		 <action name="updateadvcost" class="org.struts.action.updateAdvCost"  method="updateAdvertisementCost">
+		<result name="success">/demoSuccess.jsp</result>
+		</action>
+		
+        
+          <action name ="vat" class="org.struts.action.vatAction">
+            <result name="success">vatTax.jsp</result>
+            <result name="error">vatTax.jsp </result>
+            </action>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+         <action name="UserLogin" class="org.struts.action.UserLoginAction" >
+            <result name="success" >indexCopy.jsp</result>
+            <result name="error" type="redirect">/userLogin.jsp</result>
+        </action>
+             <action name="UserRegister" class="org.struts.action.UserRegisterAction" method="executeSubmit">
+            <result name="success" >WelcomeUser.jsp</result>
+            <result name="error" type="redirect">/userLogin.jsp</result>
+            <result name="failure" type="redirect">/userLogin.jsp</result>
+            
+        </action>
+ 	  <action name="userLogout" class="org.struts.action.LogoutAction" >
+            <result name="success" type="redirect">/userLogin.jsp</result>
+            <result name="ERROR" type="redirect">/userLogin.jsp</result>
+        </action>
+        <action name="forgotpassword" class="org.struts.action.ForgotAction" >
+            <result name="success">/NewPassword.jsp</result>
+            <result name="error" type="redirect">/reset.jsp</result>
+        </action>
+        
+	    
+        <action name="deleteSuCat" class="org.struts.action.CallAction" method="deleteSubCat" >
+            <result name="success">/deleteSubCat.jsp</result>         
+        </action>
+        <action name="deleteSubCategory" class="org.struts.action.SubCatAction" method="deleteSubCategory" >
+            <result name="success">/deletedSubCategory.jsp</result>         
+        </action>
+          <action name="addsubCat" class="org.struts.action.addsubCat" >
+            <result name="success" type="redirect">/welcome1.jsp</result>
+            <result name="error" type="redirect">/welcome.jsp</result>
+            <result name="input" type="redirect">/success.jsp</result>
+        </action>
+ 	<action name="sellerLogin" class="org.struts.action.SellerLoginAction" >
+            <result name="success" >indexCopy.jsp</result>
+            <result name="error" type="redirect">/sellerLogin.jsp</result>
+        </action>
+        <action name="userLogin" class="org.struts.action.SellerLoginAction" >
+            <result name="success" >AddToCart.jsp</result>
+            <result name="error" type="redirect">/userLogin.jsp</result>
+        </action>
+ 	
+ 	<action name="addCat" class="org.struts.action.addCatAction" >
+            <result name="success" >/success.jsp</result>
+            <result name="error" type="redirect">/welcome.jsp</result>
+            <result name="input" type="redirect">/welcome.jsp</result>
+        </action>
+ 	<action name="logout2" class="org.struts.action.LoginAction" method="logout" >
+            <result name="success" type="redirect">/sellerLogin.jsp</result>
+             <result name="ERROR" type="redirect">/sellerLogin.jsp</result>
+        </action>
+ 
+        <action name="logout" class="org.struts.action.LogoutAction">
+            <result name="success" type="redirect">/userLogin.jsp</result>
+            <result name="error" type="redirect">/sellerLogin.jsp</result>
+        </action>
+	    
+	    <action name="submitAction" class="org.struts.action.RegisterAction" method="executeSubmit">
+			<result name="success">/registerSuccess.jsp</result>
+			<result name="failure">/registerFailure.jsp</result>
+			<result name="input">/register.jsp</result>			
+	    </action>
+	       
+	    <action name="deleteItemAction" class="org.struts.action.DeleteItemAction" method="execute">
+			<result name="success">/registerSuccess.jsp</result>
+			<result name="failure">/registerFailure.jsp</result>			
+	    </action>
+	    <action name="homePageAction" class="org.struts.action.RegisterAction" method="homePage">
+			<result name="home">/indexCopy.jsp</result>		
+			<result name="input">/indexCopy.jsp</result>					
+	    </action>
+		<action name="deleteItem" class="org.struts.action.DeleteItemAction" method="itemDeleteSubmit">
+			<result name="success">/itemdeleted.jsp</result>
+			<result name="error">/itemdeletederror.jsp</result>
+			<result name="input" type="chain">DeleteItemAction</result>
+		</action>
+		
+		<action name="AdvertisementCostAction" class="org.struts.action.AdvertisementCostAction">
+			<result name="SUCCESS" type="chain">call</result>
+			<result name="input">/indexCopy.jsp</result>
+		</action>
+		
+		<action name="callReport" class="org.struts.action.AddItemAction" method="displayList">
+			<result name="success">/reportSelectCat.jsp</result>
+		</action>
+		
+		<action name="callReportCat" class="org.struts.action.AddItemAction" method="displayList">
+			<result name="success">/reportGenerateSelectCat.jsp</result>
+		</action>
+		
+		
+		
+		
+		<action name="itemAction" class="org.struts.action.ItemAction">
+		<result name="Add" type="chain">callReport</result>
+		<result name="Delete" type="chain">DeleteItemAction</result>
+		<result name="addDeals" type="chain" >addDeals</result>
+		<result name="deleteDeals" type="chain" >deleteDeals</result>
+		<result name="success">/indexCopy.jsp</result>
+		<result name="view" >/SellerUpdate.jsp</result>
+		<result name="Edit" type="chain">EditItemAction</result>
+		<result name="input">/indexCopy.jsp</result>
+		</action>
+		
+		<action name="editItem" class="org.struts.action.EditItemAction" method="itemEditSubmit">
+			<result name="success" type="chain">callEdit</result>
+		</action>
+		<action name="sellerUpdate" class="org.struts.action.ItemAction" method="sellerUpdate">
+			<result name="success">/SellerUpdate.jsp</result>
+		</action>
+		<action name="EditItemAction" class="org.struts.action.EditItemAction">
+			<result name="success">editItem.jsp</result>
+		</action>	
+		
+		
+		<action name="callEdit" class="org.struts.action.AddItemAction" method="displayList">
+		<result name="success">/editForm.jsp</result>
+		</action>
+		
+		 <action name="updateItem" class="org.struts.action.EditItemAction" method="UpdateItem">
+			<result name="success">/FormUpdated.jsp</result>
+		</action>
+		
+		
+		
+		<action name="SellerUpdate1" class="org.struts.action.ItemAction" method="executeUpdate" >
+			<result name="success">/itemManagement.jsp</result>
+		
+		</action>
+		<action name="addItemListAction" class="org.struts.action.testAction">
+			<result name="success">/addItem.jsp</result>
+		</action>		 		 
+		<action name="DeleteItemAction" class="org.struts.action.DeleteItemAction">
+			<result name="success">deleteItem.jsp</result>
+		</action>		 		 
+        <action name="updateUser" method="update" class="org.struts.action.RegisterAction">
+            <result name="success">/success.jsp</result>
+        </action>
+        <action name="deleteUser" method="delete" class="org.struts.action.RegisterAction">
+            <result name="success">/success.jsp</result>
+        </action>
+		 <action name="addItem" class="org.struts.action.AddItemAction" method="execute">
+		<result name="success">/addItemSuccess.jsp</result>
+		<result name="error">/registerFailure.jsp</result>
+		<result name="input">/addItemform.jsp</result>
+		<result name="duplicate">/addItemform.jsp</result>
+		</action>
+		<action name="test" class="org.struts.action.testAction">
+			<result>/testPage.jsp</result>			
+		</action>
+		<action name="itemByCat" class="org.struts.action.ItemByCatAction">
+			<result name="success">/itemByCat.jsp</result>			
+		</action>
+		
+		 <action name="call" class="org.struts.action.AddItemAction" method="displayList">
+		<result name="success">/addItemForm.jsp</result>
+		</action>
+		
+		<action name="cart" class="org.struts.action.CartAction">
+			<result name="success">/cart.jsp</result>
+		</action>
+			<action name="addtocart" class="org.struts.action.AddToCartAction">
+			<result name="success">/AddToCart.jsp</result>
+		</action>
+		
+			<action name="remove" class="org.struts.action.AddToCartAction" method="remove">
+			<result name="success">/AddToCart.jsp</result>
+		</action>
+		
+		<action name="showAddress" class="org.struts.action.displayAddress" >
+            <result name="success">/address.jsp</result>
+         </action>
+           <action name="selectedAddress" class="org.struts.action.displayAddress" >
+            <result name="success">/payment.jsp</result>
+         </action>
+          <action name="addAddress" class="org.struts.action.addAddress" >
+            <result name="success" type="chain">showAddress</result>
+         </action>
+
+	<action name="makePayment" class="org.struts.action.PaymentAction">
+			<result name="success">/paymentSuccessful.jsp</result>
+			<result name="error">/paymentFailure.jsp</result>
+			<result name="input">/indexCopy.jsp</result>
+			<result name="index">/payment.jsp</result>
+			
+	</action>
+	 <action name="sendMail" class="org.struts.action.sendMail" >
+            <result name="success">/demoSuccess.jsp</result>
+         </action>
+
+		
+		<action name="trackOrder" class="org.struts.action.TrackOrderAction" >
+		<result name="success" >/trackMyOrder.jsp</result>
+		<result name="error" >/userLogin.jsp</result>
+		</action>
+		<action name="changeMyTrack" class="org.struts.action.TrackOrderAction" method="execute1">
+		<result name="success" >/changeMyOrderStatus.jsp</result>
+		<result name="error" >/sellerLogin.jsp</result> 
+		</action>
+		 <action name="deal" class="org.struts.action.DealAction" >
+			<result name="success">/deal1.jsp</result>
+		</action>
+		 <action name="advertisement" class="org.struts.action.AdvertisementAction">
+		<result name="success">/advertisement1.jsp</result>
+		</action>
+		<action name="ajaxAction" class="org.struts.action.AjaxAction" method="subCatList">
+		<result name="success" type="json">
+		<param name="excludeNullProperties">true</param>
+		<param name="noCache">true</param>
+		</result>
+		</action>
+		 <action name="ajaxAction1" class="org.struts.action.AjaxAction" method="itemNameValue">
+			<result name="success" type="json">
+			<param name="excludeNullProperties">true</param>
+			<param name="noCache">true</param>
+			</result>
+		</action>
+		 <action name="displayItemById" class="org.struts.action.DispalyItemAction">
+		<result name="success">/item.jsp</result>
+		</action>
+		
+		<action name="itemBySubCatAction" class="org.struts.action.itemBySubCatAction">
+		<result name="success">/itemBySubCat.jsp</result>
+		</action> 
+		<action name="update" class="org.struts.action.AddToCartAction" method="update">
+			<result name="success">/AddToCart.jsp</result>
+		</action>
+		<action name="status" class="org.struts.action.StatusAction">
+			<result name="success">/success.jsp</result>
+			
+		</action>
+		<action name="filter" class="org.struts.action.FilterAction">
+			<result name="success">/Filter.jsp</result>
+			<result name="input">/Filter.jsp</result>
+			<result name="error">/indexCopy.jsp</result>
+		</action>
+		<action name="filter1" class="org.struts.action.FilterAction">
+			<result name="success">/Filter1.jsp</result>
+			<result name="input">/Filter1.jsp</result>
+			<result name="error">/indexCopy.jsp</result>
+		</action>
+		<action name="myreport" class="org.struts.action.MyReportAction">
+			<result name="success">/Myreport.jsp</result>
+		</action>
+		
+		<action name="reportActionbycat" class="org.struts.action.ReportActionByCat">
+			<result name="success">/report.jsp</result>
+		</action>
+		
+		
+		<action name="quantity" class="org.struts.action.AddToCartAction" method="update">
+			<result name="success">/quantity.jsp</result>
+			</action>
+			<action name="reportAction" class="org.struts.action.ReportAction">
+		<result name="success">/report.jsp</result>
+		</action>
+		<action name="itemDetail" class="org.struts.action.SellAction" method="executeSubmit">
+			<result name="success">/labReport.jsp</result>
+			<result name="input">/lab2.jsp</result>
+		</action>
+		<!-- <action name="MyWelcome" class="org.struts.action.MyWelcomeAction" >
+			<result name="success">/paymentFailure.jsp</result>
+			<result name="input">/WelcomeUser.jsp</result>
+			<result name="view">UpdateUser.jsp</result>
+		</action>-->
+		
+		<action name="updateAccount" class="org.struts.action.MyWelcomeAction" method="execute">
+			<result name="success">UpdateUser.jsp</result>
+		</action>
+		
+		<action name="deleteAccount" class="org.struts.action.MyWelcomeAction" method="executeDelete">
+			<result name="success">deleteUserSuccess.jsp</result>
+		</action>
+		
+			
+		<action name="UserUpdate1" class="org.struts.action.MyWelcomeAction" method="executeUpdate" >
+			<result name="success">/WelcomeUser.jsp</result>
+		
+		</action>
+		<action name="addDeals" class="org.struts.action.dealsAction" method="execute">
+			<result name="success">/addDeals.jsp</result>
+		</action>
+		<action name="dealAdded" class="org.struts.action.dealsAction" method="dealAdded">
+		<result name="success">/dealSuccessfull.jsp</result>
+		</action>
+		
+		 <action name="dealsAction" class="org.struts.action.dealsAction" method="displayDeal">
+		<result name="success">/deals.jsp</result>
+		</action> 
+		<action name="dealCart" class="org.struts.action.dealsAction" method="dealCart">
+		<result name="success" type="chain">dealToCart</result>
+		</action> 
+		<action name="dealToCart" class="org.struts.action.AddToCartAction" method="dealCart">
+		<result name="success" >/AddToCart.jsp</result>
+		</action> 
+			<action name="summary" class="org.struts.action.AddToCartAction" method="summary">
+			<result name="success">/summary.jsp</result>
+			
+			</action>
+			<action name="rate" class="org.struts.action.TrackOrderAction" method="rate">
+			<result name="success">/quantity.jsp</result>
+			</action>
+		<action name="buyNow" class="org.struts.action.BuyNowAction">
+			<result name="success">/buyNow.jsp</result>
+			<result name="loginError">/userLogin.jsp</result>
+		</action>
+		<action name="buyNow1" class="org.struts.action.BuyNowAction">
+			<result name="success">/buyNow1.jsp</result>
+			
+		</action>
+		<action name="payment1" class="org.struts.action.PaymentAction1">
+			<result name="success">/payment1.jsp</result>
+		</action>
+		<action name="makePaymentBuyNow" class="org.struts.action.PaymentAction1" method="buy">
+			<result name="success">/paymentSuccessful.jsp</result>
+			<result name="error">/construction.jsp</result>
+		</action>
+		
+		<action name="addNewAddressBuyNow" class="org.struts.action.BuyNowAction" method="redirect">
+			<result name="success">/addAddressBuyNow.jsp</result>
+			
+		</action>
+		
+		<action name="addAddressBuyNow" class="org.struts.action.BuyNowAction" method="addAddress">
+			<result name="success">/buyNow.jsp</result>
+			<result name="error">/construction.jsp</result>
+		</action>
+		<action name="deleteAddressBuyNow" class="org.struts.action.BuyNowAction" method="deleteAddress">
+			<result name="success">/buyNow.jsp</result>
+			<result name="error">/construction.jsp</result>
+		</action>
+		<action name="deleteDeals" class="org.struts.action.dealsAction" method="displayDeal">
+			<result name="success">/deal2.jsp</result>
+		</action>
+		<action name="delDealAction" class="org.struts.action.dealsAction" method="deleteDeals">
+			<result name="success">/dealSuccessfull.jsp</result>
+		</action>
+		<action name="addNewAddressBuyNow" class="org.struts.action.BuyNowAction" method="redirect">
+			<result name="success">/addAddressBuyNow.jsp</result>
+			
+		</action>
+		<action name="addNewAddressBuyNow" class="org.struts.action.BuyNowAction" method="redirect">
+			<result name="success">/addAddressBuyNow.jsp</result>
+			
+		</action>
+		
+		
+		<action name="reportActionByDate" class="org.struts.action.LabTestAction">
+			<result name="success">/reportLabTest1.jsp</result>
+		</action>
+		
+		
+		<action name="itemByWeight" class="org.struts.action.FinalTestAction1">
+			<result name="success">/itemW.jsp</result>
+			<result name="error">/construction.jsp</result>
+		</action>
+		
+		<action name="finalexam2" class="org.struts.action.FinalTestAction2">
+			<result name="success">/sellerAvg.jsp</result>
+			<result name="error">/construction.jsp</result>
+		</action>
+			</package>
+	</struts>
+	
